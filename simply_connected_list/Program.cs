@@ -68,8 +68,18 @@
 
         public static void addToTheEnd(Node head)
         {
-            Console.WriteLine("Введите значение: ");
-            int value = Convert.ToInt32(Console.ReadLine());
+            int value;
+            inpValue:
+            try
+            {
+                Console.WriteLine("Введите значение: ");
+                value = Convert.ToInt32(Console.ReadLine());
+            } catch (Exception)
+            {
+                Console.WriteLine("Введите значение правильно");
+                goto inpValue;
+            }
+
 
             Node p = head;
             while (p.next is not null)
@@ -82,10 +92,30 @@
 
         public static Node addToInput(Node head)
         {
-            Console.WriteLine("Введите значение: ");
-            int value = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Введите место: ");
-            int id = Convert.ToInt32(Console.ReadLine());
+            int id, value;
+
+            inpValue:
+            try
+            {
+                Console.WriteLine("Введите значение: ");
+                value = Convert.ToInt32(Console.ReadLine());
+            } catch (Exception)
+            {
+                Console.WriteLine("Введите значение правильно");
+                goto inpValue;
+            }
+
+            inpId:
+            try
+            {
+                Console.WriteLine("Введите место: ");
+                id = Convert.ToInt32(Console.ReadLine());
+            } catch (Exception)
+            {
+                Console.WriteLine("Введите ID правильно");
+                goto inpId;
+            }
+
 
             Node new_node = new Node(id, value);
 
@@ -110,8 +140,18 @@
 
         public static Node deleteFromId(Node head)
         {
+            int id;
+            inpId:
             Console.WriteLine("Введите место: ");
-            int id = Convert.ToInt32(Console.ReadLine());
+            try
+            {
+                id = Convert.ToInt32(Console.ReadLine());
+            } catch (Exception)
+            {
+                Console.WriteLine("Введите ID правильно");
+                goto inpId;
+            }
+
 
             if (head.id == id)
             {
